@@ -139,7 +139,7 @@ void Reset()
     // take a backup
     char firmbkp[1028];
     int fplen = strlen(FirmwarePath);
-    strncpy(&firmbkp[0], FirmwarePath, fplen);
+    strncpy(&firmbkp[0], FirmwarePath, fplen < 1028 ? fplen : 1028);
     strncpy(&firmbkp[fplen], ".bak", 1028-fplen);
     firmbkp[fplen+4] = '\0';
     f = Platform::OpenLocalFile(firmbkp, "rb");
